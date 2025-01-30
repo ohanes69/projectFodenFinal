@@ -1,0 +1,15 @@
+# Ignorer les dépendances
+node_modules/
+
+# Ignorer les fichiers de configuration locaux
+.env
+
+# Ignorer les fichiers de l'IDE/éditeur
+.vscode/
+settings.json
+
+# Ignorer les fichiers de cache ou de logs
+*.log
+
+# Ignorer les fichiers générés par TailwindCSS
+/src/output.css

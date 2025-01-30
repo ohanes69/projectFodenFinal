@@ -3,6 +3,7 @@ node_modules/
 
 # Ignorer les fichiers de configuration locaux
 .env
+.DS_Store
 
 # Ignorer les fichiers de l'IDE/éditeur
 .vscode/

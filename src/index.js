@@ -1,45 +1,51 @@
-  // Sélectionne les éléments nécessaires
+document.addEventListener("DOMContentLoaded", () => {
   const modal = document.getElementById('videoModal');
   const modalVideo = document.getElementById('modalVideo');
   const closeModal = document.getElementById('closeModal');
   const videoThumbnails = document.querySelectorAll('.video-thumbnail');
 
-  // Ajoute un événement pour ouvrir la modal
-  // Variable pour éviter les clics involontaires
-let tapTimer = null;
+  let touchStartTime = 0;
 
-videoThumbnails.forEach(thumbnail => {
-  // Pour mobile (tap)
-  thumbnail.addEventListener('touchend', function () {
-    if (tapTimer) {
-      clearTimeout(tapTimer);
-      tapTimer = null;
-    }
+  videoThumbnails.forEach(thumbnail => {
+    // Sur mobile, stocker le début du toucher
+    thumbnail.addEventListener('touchstart', () => {
+      touchStartTime = Date.now();
+    });
 
-    tapTimer = setTimeout(() => {
-      const videoSrc = this.getAttribute('data-video-src');
-      modalVideo.src = videoSrc;
-      modal.classList.remove('hidden');
-    }, 100); // 100ms pour éviter déclenchement trop rapide
+    // Fin du toucher
+    thumbnail.addEventListener('touchend', function () {
+      const touchDuration = Date.now() - touchStartTime;
+      if (touchDuration > 100 && touchDuration < 400) {
+        openModal(this.getAttribute('data-video-src'));
+      }
+    });
+
+    // Sur desktop
+    thumbnail.addEventListener('click', function () {
+      openModal(this.getAttribute('data-video-src'));
+    });
   });
 
-  // Pour desktop (click)
-  thumbnail.addEventListener('click', function () {
-    const videoSrc = this.getAttribute('data-video-src');
+  function openModal(videoSrc) {
     modalVideo.src = videoSrc;
     modal.classList.remove('hidden');
+    modalVideo.play();
+  }
+
+  closeModal.addEventListener('click', () => {
+    closeVideo();
   });
-});
 
-closeModal.addEventListener('click', () => {
-  modal.classList.add('hidden');
-  modalVideo.pause();
-  modalVideo.src = '';
-});
+  modal.addEventListener('click', (event) => {
+    if (event.target === modal) {
+      closeVideo();
+    }
+  });
 
-modal.addEventListener('click', (event) => {
-  if (event.target === modal) {
-    closeModal.click();
+  function closeVideo() {
+    modal.classList.add('hidden');
+    modalVideo.pause();
+    modalVideo.src = '';
   }
 });
 

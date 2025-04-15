@@ -69,78 +69,51 @@
             <path d="M96-456v-72h120v72H96Zm147 216-51-51 85-84 51 50-85 85Zm34-392-85-85 51-51 84 85-50 51Zm471 488L557-335l-53 143-120-384 384 120-143 53 191 191-68 68ZM432-696v-120h72v120h-72Zm203 63-51-50 85-85 51 51-85 84Z"/>
           </svg>
         </button>
-        <!-- <p class="text-xl">Découvrez l'univers cinématographique de <span class="text-amber-400">Fodé Niang</span></p> -->
       </div>
     </div>
   </section>
 
   <!-- 2ème section -->
   <section class="bg-white relative w-full mt-16">
-    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-4 p-2 sm:p-6">    
-      <!-- 2 -->
-      <!-- Modal -->
+    <!-- Unique Modal (une seule fois dans la page) -->
     <div id="videoModal" class="fixed inset-0 z-50 hidden bg-black bg-opacity-90 flex items-center justify-center">
-        <div class="relative w-full max-w-6xl">
-            <button id="closeModal" class="absolute top-4 right-4 text-white text-2xl cursor-pointer">&times;</button>
-            <video id="modalVideo" controls autoplay class="w-full h-[80vh] rounded-lg">
-                <source src="" type="video/mp4">
-                Votre navigateur ne supporte pas la vidéo.
-            </video>
-        </div>
+      <div class="relative w-full max-w-6xl">
+        <button id="closeModal" class="absolute top-4 right-4 text-white text-2xl cursor-pointer">&times;</button>
+        <video id="modalVideo" controls autoplay class="w-full h-[80vh] rounded-lg">
+          <source src="" type="video/mp4">
+          Votre navigateur ne supporte pas la vidéo.
+        </video>
+      </div>
     </div>
-      <div class="relative overflow-hidden h-[40vh] sm:h-[50vh] md:h-[60vh] cursor-pointer video-thumbnail" data-video-src="https://foden.s3.fr-par.scw.cloud/MARCADET.mp4">
-        <video autoplay muted loop playinline class="w-full h-full object-cover">
+  
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-4 p-2 sm:p-6">
+      <!-- 1 -->
+      <div class="relative overflow-hidden h-[40vh] sm:h-[50vh] md:h-[60vh] video-thumbnail cursor-pointer" data-video-src="https://foden.s3.fr-par.scw.cloud/MARCADET.mp4">
+        <video autoplay muted loop playsinline class="w-full h-full object-cover pointer-events-none">
           <source src="https://foden.s3.fr-par.scw.cloud/MARCADET.mp4" type="video/mp4">
           Votre navigateur ne supporte pas la vidéo.
         </video>
       </div>
-      <!-- 3 -->
-      <!-- Modal -->
-    <div id="videoModal" class="fixed inset-0 z-50 hidden bg-black bg-opacity-90 flex items-center justify-center">
-        <div class="relative w-full max-w-6xl">
-            <button id="closeModal" class="absolute top-4 right-4 text-white text-2xl cursor-pointer">&times;</button>
-            <video id="modalVideo" controls autoplay class="w-full h-[80vh] rounded-lg">
-                <source src="" type="video/mp4">
-                Votre navigateur ne supporte pas la vidéo.
-            </video>
-        </div>
-    </div>
+  
+      <!-- 2 -->
       <div class="relative overflow-hidden h-[40vh] sm:h-[50vh] md:h-[60vh] video-thumbnail cursor-pointer" data-video-src="https://foden.s3.fr-par.scw.cloud/MARINE%20COMPRESSE%CC%81.mp4">
-        <video autoplay muted loop playinline class="w-full h-full object-cover">
+        <video autoplay muted loop playsinline class="w-full h-full object-cover pointer-events-none">
           <source src="https://foden.s3.fr-par.scw.cloud/MARINE%20COMPRESSE%CC%81.mp4" type="video/mp4">
           Votre navigateur ne supporte pas la vidéo.
         </video>
       </div>
-      <!-- 4 -->
-      <!-- Modal -->
-    <div id="videoModal" class="fixed inset-0 z-50 hidden bg-black bg-opacity-90 flex items-center justify-center">
-        <div class="relative w-full max-w-6xl">
-            <button id="closeModal" class="absolute top-4 right-4 text-white text-2xl cursor-pointer">&times;</button>
-            <video id="modalVideo" controls autoplay class="w-full h-[80vh] rounded-lg">
-                <source src="" type="video/mp4">
-                Votre navigateur ne supporte pas la vidéo.
-            </video>
-        </div>
-    </div>
+  
+      <!-- 3 -->
       <div class="relative overflow-hidden h-[40vh] sm:h-[50vh] md:h-[60vh] video-thumbnail cursor-pointer" data-video-src="https://foden.s3.fr-par.scw.cloud/occaz-couplet-1.mp4">
-        <video autoplay muted loop playinline class="w-full h-full object-cover">
+        <video autoplay muted loop playsinline class="w-full h-full object-cover pointer-events-none">
           <source src="https://foden.s3.fr-par.scw.cloud/occaz-couplet-1.mp4" type="video/mp4">
           Votre navigateur ne supporte pas la vidéo.
         </video>
       </div>
-      <!-- 6 -->
-      <!-- Modal -->
-    <div id="videoModal" class="fixed inset-0 z-50 hidden bg-black bg-opacity-90 flex items-center justify-center">
-        <div class="relative w-full max-w-6xl">
-            <button id="closeModal" class="absolute top-4 right-4 text-white text-2xl cursor-pointer">&times;</button>
-            <video id="modalVideo" controls autoplay class="w-full h-[80vh] rounded-lg">
-                <source src="" type="video/mp4">
-                Votre navigateur ne supporte pas la vidéo.
-            </video>
-        </div>
-    </div>
+  
+      <!-- 4 -->
       <div class="relative overflow-hidden h-[40vh] sm:h-[50vh] md:h-[60vh] video-thumbnail cursor-pointer" data-video-src="https://foden.s3.fr-par.scw.cloud/VISION.MP4">
-        <video autoplay muted loop playinline class="w-full h-full object-cover">
+        <video autoplay muted loop playsinline class="w-full h-full object-cover pointer-events-none">
           <source src="https://foden.s3.fr-par.scw.cloud/VISION.MP4" type="video/mp4">
           Votre navigateur ne supporte pas la vidéo.
         </video>

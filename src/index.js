@@ -5,13 +5,43 @@
   const videoThumbnails = document.querySelectorAll('.video-thumbnail');
 
   // Ajoute un événement pour ouvrir la modal
-  videoThumbnails.forEach(thumbnail => {
-    thumbnail.addEventListener('click', function () {
-      const videoSrc = this.getAttribute('data-video-src'); // Récupère l'URL de la vidéo
-      modalVideo.src = videoSrc; // Charge la vidéo dans la modal
-      modal.classList.remove('hidden'); // Affiche la modal
-    });
+  // Variable pour éviter les clics involontaires
+let tapTimer = null;
+
+videoThumbnails.forEach(thumbnail => {
+  // Pour mobile (tap)
+  thumbnail.addEventListener('touchend', function () {
+    if (tapTimer) {
+      clearTimeout(tapTimer);
+      tapTimer = null;
+    }
+
+    tapTimer = setTimeout(() => {
+      const videoSrc = this.getAttribute('data-video-src');
+      modalVideo.src = videoSrc;
+      modal.classList.remove('hidden');
+    }, 100); // 100ms pour éviter déclenchement trop rapide
   });
+
+  // Pour desktop (click)
+  thumbnail.addEventListener('click', function () {
+    const videoSrc = this.getAttribute('data-video-src');
+    modalVideo.src = videoSrc;
+    modal.classList.remove('hidden');
+  });
+});
+
+closeModal.addEventListener('click', () => {
+  modal.classList.add('hidden');
+  modalVideo.pause();
+  modalVideo.src = '';
+});
+
+modal.addEventListener('click', (event) => {
+  if (event.target === modal) {
+    closeModal.click();
+  }
+});
 
   // Ajoute un événement pour fermer la modal
   closeModal.addEventListener('click', () => {

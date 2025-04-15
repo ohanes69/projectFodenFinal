@@ -734,9 +734,6 @@
   .bg-black {
     background-color: var(--color-black);
   }
-  .bg-blue-400 {
-    background-color: var(--color-blue-400);
-  }
   .bg-white {
     background-color: var(--color-white);
   }
@@ -893,13 +890,6 @@
     &:hover {
       @media (hover: hover) {
         color: var(--color-amber-400);
-      }
-    }
-  }
-  .hover\:underline {
-    &:hover {
-      @media (hover: hover) {
-        text-decoration-line: underline;
       }
     }
   }

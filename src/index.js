@@ -5,48 +5,49 @@ document.addEventListener("DOMContentLoaded", () => {
   const videoThumbnails = document.querySelectorAll('.video-thumbnail');
 
   let touchStartTime = 0;
+  let touchStartX = 0;
+  let touchStartY = 0;
 
   videoThumbnails.forEach(thumbnail => {
-    // Sur mobile, stocker le début du toucher
-    thumbnail.addEventListener('touchstart', () => {
+    thumbnail.addEventListener('touchstart', (e) => {
       touchStartTime = Date.now();
+      touchStartX = e.touches[0].clientX;
+      touchStartY = e.touches[0].clientY;
     });
 
-    // Fin du toucher
-    thumbnail.addEventListener('touchend', function () {
+    thumbnail.addEventListener('touchend', (e) => {
       const touchDuration = Date.now() - touchStartTime;
-      if (touchDuration > 300 && touchDuration < 400) {
-        openModal(this.getAttribute('data-video-src'));
+      const touchEndX = e.changedTouches[0].clientX;
+      const touchEndY = e.changedTouches[0].clientY;
+      const moveX = Math.abs(touchEndX - touchStartX);
+      const moveY = Math.abs(touchEndY - touchStartY);
+
+      // On ouvre la modale uniquement si l'appui a duré moins de 200ms et s'il n'y a presque pas eu de mouvement
+      if (touchDuration < 200 && moveX < 10 && moveY < 10) {
+        const videoSrc = thumbnail.getAttribute('data-video-src');
+        modalVideo.src = videoSrc;
+        modal.classList.remove('hidden');
       }
     });
 
-    // Sur desktop
     thumbnail.addEventListener('click', function () {
-      openModal(this.getAttribute('data-video-src'));
+      const videoSrc = this.getAttribute('data-video-src');
+      modalVideo.src = videoSrc;
+      modal.classList.remove('hidden');
     });
   });
 
-  function openModal(videoSrc) {
-    modalVideo.src = videoSrc;
-    modal.classList.remove('hidden');
-    modalVideo.play();
-  }
-
   closeModal.addEventListener('click', () => {
-    closeVideo();
+    modal.classList.add('hidden');
+    modalVideo.pause();
+    modalVideo.src = '';
   });
 
   modal.addEventListener('click', (event) => {
     if (event.target === modal) {
-      closeVideo();
+      closeModal.click();
     }
   });
-
-  function closeVideo() {
-    modal.classList.add('hidden');
-    modalVideo.pause();
-    modalVideo.src = '';
-  }
 });
 
   // Ajoute un événement pour fermer la modal

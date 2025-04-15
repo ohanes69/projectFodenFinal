@@ -13,4 +13,4 @@ settings.json
 *.log
 
 # Ignorer les fichiers générés par TailwindCSS
-/src/output.css
+/public/output.css

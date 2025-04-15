@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Fin du toucher
     thumbnail.addEventListener('touchend', function () {
       const touchDuration = Date.now() - touchStartTime;
-      if (touchDuration > 100 && touchDuration < 400) {
+      if (touchDuration > 300 && touchDuration < 400) {
         openModal(this.getAttribute('data-video-src'));
       }
     });
